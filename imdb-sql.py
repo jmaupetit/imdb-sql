@@ -1,5 +1,18 @@
 #!/usr/bin/env python
 
+"""Load IMDB datasets in a SQL database.
+
+Usage: imdb-sql.py [DATABASE_URL]
+
+  DATABASE_URL: a SQLAlchemy-compatible database URL (default: sqlite:///im.db)
+
+For each downloaded IMDB dataset, this script will load their data to a SQL table for
+the configured database.
+
+Note that if the table already exists, it will be dumped and re-created with current
+dataset.
+"""
+
 import sys
 from pathlib import Path
 
