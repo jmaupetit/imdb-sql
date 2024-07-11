@@ -1,0 +1,24 @@
+services:
+  postgresql:
+    image: postgres:16.3
+    env_file:
+      - env.d/postgresql
+    healthcheck:
+      test:
+        - "CMD-SHELL"
+        - "pg_isready"
+        - "-d"
+        - "$${QUALICHARGE_DB_NAME}"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+
+  mariadb:
+    image: mariadb:11.4.2
+    restart: always
+    env_file:
+      - env.d/mariadb
+    ports:
+      - "3306:3306"

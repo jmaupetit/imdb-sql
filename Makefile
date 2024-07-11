@@ -59,6 +59,27 @@ lint-mypy: ## lint python sources with mypy
 	poetry run mypy .
 .PHONY: lint-mypy
 
+# Docker
+down:
+	docker compose down
+.PHONY: down
+
+run-dbs:
+	docker compose up -d postgresql mariadb
+.PHONY: run-dbs
+
+run-posgres:
+	docker compose up -d postgresql
+.PHONY: run-posgres
+
+run-mariadb:
+	docker compose up -d mariadb
+.PHONY: run-mariadb
+
+stop:
+	docker compose stop
+.PHONY: stop
+
 # -- Misc
 help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
