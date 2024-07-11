@@ -1,0 +1,5 @@
+# local databases
+*.db
+
+# archives
+*.tsv.gz
