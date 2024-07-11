@@ -34,6 +34,54 @@ MariaDB instance. We support database URLs as defined in
 [SQLAlchemy](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls)
 (note that you need to install database-specific driver you need).
 
+## Testing with other DBMS
+
+We provide a Docker compose configuration to test datasets loading in other DBMS
+than SQLite.
+
+> 💡 Feel free to substitute provided docker-based configuration with the
+> database server instance used in performance tests.
+
+### PostgreSQL
+
+Boot the Postgres server (if you need one, else use your own server):
+
+```sh
+docker compose up -d postgresql
+```
+
+Install the Postgres driver:
+
+```sh
+poetry add psycopg2-binary
+```
+
+Load IMDB datasets:
+
+```sh
+poetry run python imdb-sql.py postgresql://imdb:pass@localhost:5432/imdb
+```
+
+### MariaDB
+
+Boot the MariaDB server (if you need one, else use your own server):
+
+```sh
+docker compose up -d mariadb
+```
+
+Install the MariaDB driver (you should first install MariaDB on your system):
+
+```sh
+poetry add mariadb
+```
+
+Load IMDB datasets:
+
+```sh
+poetry run python imdb-sql.py mariadb://imdb:pass@localhost:3306/imdb
+```
+
 ## LICENSE
 
 This work is released under the MIT License.
