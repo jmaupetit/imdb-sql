@@ -32,7 +32,7 @@ With no argument, this will create an `im.db` SQLite database in the current
 directory. Feel free to add the `DATABASE_URL` argument to use a PostgreSQL or
 MariaDB instance. We support database URLs as defined in
 [SQLAlchemy](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls)
-(note that you need to install database-specific driver you need).
+(note that you need to install required database-specific driver).
 
 ## Testing with other DBMS
 
