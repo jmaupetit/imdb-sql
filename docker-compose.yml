@@ -17,7 +17,6 @@ services:
 
   mariadb:
     image: mariadb:11.4.2
-    restart: always
     env_file:
       - env.d/mariadb
     ports:
